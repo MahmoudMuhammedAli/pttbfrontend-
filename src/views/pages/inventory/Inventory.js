@@ -1,7 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { connect } from "react-redux";
-import DataTableBasic from "../../tables/data-tables/DataTableBasic"
+import DataTableBasic from "../../tables/data-tables/DataTableBasic";
+import DataTableCustom from "../../tables/data-tables/DataTableCustom";
+import DataTableCustomBK from "../../tables/data-tables/DataTableCustomBK"
 import {
   Card,
   CardBody,
@@ -349,13 +351,11 @@ class Inventory extends React.Component {
                                   {rowData.masterSKU || ""}
                                 </div>
                                 <div className="">
-                                      <div
-                                       
-                                        className="d-flex flex-column flex-md-column mb-2"
-                                      >
-                                        <DataTableBasic/>
-                                      </div>
-                                  
+                                  {/*TODO: data table */}
+                                  <div className="d-flex flex-column flex-md-column mb-2">
+                                    {/*//! Table of tables <DataTableCustom /> */}
+                                    <DataTableCustomBK/>
+                                  </div>
                                 </div>
                                 <div className="d-flex flex-column flex-md-row justify-content-end navbar-light pt-1 pb-1 px-1">
                                   <div className="title text-uppercase text-bold-600 mx-5">

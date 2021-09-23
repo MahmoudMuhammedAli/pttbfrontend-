@@ -52,12 +52,12 @@ const res = [
 ]
 const columns = [
   {
-    name: "Id",
+    name: "Reason",
     selector: "id",
     sortable: true
   },
   {
-    name: "First Name",
+    name: "Qty",
     selector: "first_name",
     sortable: true
   }
@@ -80,7 +80,7 @@ const data = [
   }
 ]
 
-class DataTableBasic extends React.Component {
+class DataTableOther extends React.Component {
   render() {
     return (
       <Card>
@@ -94,4 +94,4 @@ class DataTableBasic extends React.Component {
   }
 }
 
-export default DataTableBasic
+export default DataTableOther

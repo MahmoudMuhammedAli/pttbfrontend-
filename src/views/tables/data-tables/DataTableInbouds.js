@@ -52,12 +52,17 @@ const res = [
 ]
 const columns = [
   {
-    name: "Id",
+    name: "Date",
     selector: "id",
     sortable: true
   },
   {
-    name: "First Name",
+    name: "Current Location",
+    selector: "first_name",
+    sortable: true
+  },
+  {
+    name: "Qty",
     selector: "first_name",
     sortable: true
   }
@@ -70,17 +75,10 @@ const data = [
     last_name: "Lillecrop",
     email: "alillecrop0@twitpic.com",
     gender: "Female"
-  },
-  {
-    id: 2,
-    first_name: "Shep",
-    last_name: "Pentlow",
-    email: "spentlow1@home.pl",
-    gender: "Male"
   }
 ]
 
-class DataTableBasic extends React.Component {
+class DataTableInbounds extends React.Component {
   render() {
     return (
       <Card>
@@ -94,4 +92,4 @@ class DataTableBasic extends React.Component {
   }
 }
 
-export default DataTableBasic
+export default DataTableInbounds
