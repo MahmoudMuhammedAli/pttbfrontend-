@@ -108,7 +108,6 @@ class DataTableBasic extends React.Component {
     return (
       <Card>
         <CardHeader>
-          <CardTitle>Basic</CardTitle>
         </CardHeader>
         <CardBody>
           <DataTable data={data} columns={columns} noHeader />

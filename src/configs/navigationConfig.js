@@ -1,5 +1,5 @@
-import React from "react"
-import * as Icon from "react-feather"
+import React from "react";
+import * as Icon from "react-feather";
 const navigationConfig = [
   {
     id: "inventory",
@@ -7,7 +7,24 @@ const navigationConfig = [
     type: "item",
     icon: <Icon.Box size={16} />,
     navLink: "/pages/inventory",
-    permissions: ["admin", "editor"]
+    permissions: ["admin", "editor"],
+  },
+  {
+    id: "chat",
+    title: "Chat",
+    type: "item",
+    icon: <Icon.MessageSquare size={20} />,
+    permissions: ["admin", "editor"],
+    navLink: "/chat",
+  },
+  {
+    id: "profile",
+    title: "Profile",
+    type: "item",
+    icon: <Icon.User size={20} />,
+    permissions: ["admin", "editor"],
+    navLink: "/pages/account-settings",
+    collapsed: true
   },
   // {
   //   id: "dashboard",
@@ -48,14 +65,7 @@ const navigationConfig = [
   //   navLink: "/email/:filter",
   //   filterBase: "/email/inbox"
   // },
-  // {
-  //   id: "chat",
-  //   title: "Chat",
-  //   type: "item",
-  //   icon: <Icon.MessageSquare size={20} />,
-  //   permissions: ["admin", "editor"],
-  //   navLink: "/chat"
-  // },
+
   // {
   //   id: "todo",
   //   title: "Todo",
@@ -647,15 +657,7 @@ const navigationConfig = [
   //   type: "groupHeader",
   //   groupTitle: "PAGES"
   // },
-  // {
-  //   id: "profile",
-  //   title: "Profile",
-  //   type: "item",
-  //   icon: <Icon.User size={20} />,
-  //   permissions: ["admin", "editor"],
-  //   navLink: "/pages/profile",
-  //   collapsed: true
-  // },
+  
   // {
   //   id: "accountSettings",
   //   title: "Account Settings",
@@ -1086,6 +1088,6 @@ const navigationConfig = [
   //   permissions: ["admin", "editor"],
   //   navLink: "https://pixinvent.ticksy.com/"
   // }
-]
+];
 
-export default navigationConfig
+export default navigationConfig;
