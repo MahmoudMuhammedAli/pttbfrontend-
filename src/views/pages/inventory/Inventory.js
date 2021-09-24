@@ -1,9 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { connect } from "react-redux";
+import DataTableSale from "../../tables/data-tables/DataTableSale";
+import DataTableOthers from "../../tables/data-tables/DataTableOthers";
+import DataTableInbounds from "../../tables/data-tables/DataTableInbounds";
 import DataTableBasic from "../../tables/data-tables/DataTableBasic";
 import DataTableCustom from "../../tables/data-tables/DataTableCustom";
-import DataTableCustomBK from "../../tables/data-tables/DataTableCustomBK"
+import DataTableCustomBK from "../../tables/data-tables/DataTableCustomBK";
 import {
   Card,
   CardBody,
@@ -38,6 +41,55 @@ import "react-table/react-table.css";
 import "../../../assets/scss/plugins/extensions/react-tables.scss";
 
 class Inventory extends React.Component {
+  res = [
+    {
+      masterSKU: "mst-moft-laptop-stand-dark-grey",
+      inventory_details: {
+        inbounds: [],
+        sales: [
+          {
+            storename: "interstellargoods.myshopify.com",
+            qty: 9,
+          },
+        ],
+        other_use: [],
+      },
+      balance_stock_left: -9,
+    },
+    {
+      masterSKU: "mst-skinners-M-black-blue",
+      inventory_details: {
+        inbounds: [],
+        sales: [],
+        other_use: [],
+      },
+      balance_stock_left: 0,
+    },
+    {
+      masterSKU: "mst-determinant-face-mask-white",
+      inventory_details: {
+        inbounds: [],
+        sales: [
+          {
+            storename: "interstellargoods.myshopify.com",
+            qty: 231,
+          },
+        ],
+        other_use: [],
+      },
+      balance_stock_left: -231,
+    },
+    {
+      masterSKU: "mst-det-all-occasion-smart-shirt-pblue-reg-39",
+      inventory_details: {
+        inbounds: [],
+        sales: [],
+        other_use: [],
+      },
+      balance_stock_left: 0,
+    },
+  ];
+
   state = {
     data: null,
     agData: null,
@@ -354,7 +406,11 @@ class Inventory extends React.Component {
                                   {/*TODO: data table */}
                                   <div className="d-flex flex-column flex-md-column mb-2">
                                     {/*//! Table of tables <DataTableCustom /> */}
-                                    <DataTableCustomBK/>
+                                    {/*//! another Style <DataTableCustomBK/> */}
+                                    {/* option 3 TODO: add actual data*/}
+                                    <DataTableInbounds data={childData.inbounds.child} />
+                                    <DataTableSale data={childData.sales.child} />
+                                    <DataTableOthers  data={childData.other_use.child}/>
                                   </div>
                                 </div>
                                 <div className="d-flex flex-column flex-md-row justify-content-end navbar-light pt-1 pb-1 px-1">

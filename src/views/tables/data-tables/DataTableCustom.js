@@ -12,7 +12,7 @@ import DataTable from "react-data-table-component";
 import DataTableBasic from "./DataTableBasic"
 import DataTableSale from "./DataTableSale"
 import DataTableOthers from "./DataTableOthers"
-import DataTableInbouds from "./DataTableInbouds"
+import DataTableInbouds from "./DataTableInbounds"
 import { Star, Search } from "react-feather";
 
 const res = [

@@ -6,8 +6,14 @@ import D from "./customDT.module.css";
 
 const columns = [
   {
-    name: "Reason",
+    name: "Date",
     selector: "id",
+    sortable: true,
+    center: true,
+  },
+  {
+    name: "Current Location",
+    selector: "first_name",
     sortable: true,
     center: true,
   },
@@ -16,6 +22,7 @@ const columns = [
     selector: "first_name",
     sortable: true,
     center: true,
+    wrap: true,
   },
 ];
 
@@ -27,26 +34,19 @@ const data = [
     email: "alillecrop0@twitpic.com",
     gender: "Female",
   },
-  {
-    id: 2,
-    first_name: "Shep",
-    last_name: "Pentlow",
-    email: "spentlow1@home.pl",
-    gender: "Male",
-  },
 ];
 
-class DataTableOther extends React.Component {
+class DataTableInbounds extends React.Component {
   render() {
     return (
       <Card>
-        <h2 className={D.headers}>Other Reasons</h2>
-        <CardBody >
-          <DataTable data={data} columns={columns} center noHeader />
+        <h2 className={D.headers}>Inbounds</h2>
+        <CardBody>
+          <DataTable data={data} columns={columns} center noHeader background/>
         </CardBody>
       </Card>
     );
   }
 }
 
-export default DataTableOther;
+export default DataTableInbounds;

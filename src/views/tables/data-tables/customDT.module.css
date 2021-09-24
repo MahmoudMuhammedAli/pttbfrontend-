@@ -1,0 +1,23 @@
+.inbounds, 
+.otherHolder{
+  border-left:2px solid rgb(0, 0, 0);  
+  padding:10px 0; 
+}
+.inbounds{
+  border:none;
+}
+.Title{ 
+  font-weight: bold; 
+  margin-right: 5px;
+}
+.headers{
+  width: 100%;
+  font-size: 1.5rem;
+  text-align: center;
+}
+.cardBody{
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

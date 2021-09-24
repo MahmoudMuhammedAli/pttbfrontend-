@@ -12,140 +12,141 @@ import DataTable from "react-data-table-component";
 import DataTableBasic from "./DataTableBasic";
 import DataTableSale from "./DataTableSale";
 import DataTableOthers from "./DataTableOthers";
-import DataTableInbouds from "./DataTableInbouds";
+import DataTableInbouds from "./DataTableInbounds";
 import { Star, Search } from "react-feather";
-import D from "./customDT.module.css"
+import D from "./customDT.module.css";
 const res = [
   {
     masterSKU: "mst-moft-laptop-stand-dark-grey",
     inventory_details: {
-      inbounds: [],
+      inbounds: [{ date: "2015-10-2", currentLocation: "Cairo", qty: "5" }],
       sales: [
         {
           storename: "interstellargoods.myshopify.com",
           qty: 9,
         },
       ],
-      other_use: [],
+      other_use: [
+        {
+          reason: "damaged",
+          qty: 9,
+        },
+      ],
     },
     balance_stock_left: -9,
   },
-  {
-    masterSKU: "mst-skinners-M-black-blue",
-    inventory_details: {
-      inbounds: [],
-      sales: [],
-      other_use: [],
-    },
-    balance_stock_left: 0,
-  },
-  {
-    masterSKU: "mst-determinant-face-mask-white",
-    inventory_details: {
-      inbounds: [],
-      sales: [
-        {
-          storename: "interstellargoods.myshopify.com",
-          qty: 231,
-        },
-      ],
-      other_use: [],
-    },
-    balance_stock_left: -231,
-  },
-  {
-    masterSKU: "mst-det-all-occasion-smart-shirt-pblue-reg-39",
-    inventory_details: {
-      inbounds: [],
-      sales: [],
-      other_use: [],
-    },
-    balance_stock_left: 0,
-  },
 ];
-const CustomHeader = (props) => {
-  return <></>;
-};
 
 class DataTableCustomBK extends React.Component {
   state = {
     columns: [
       {
-        name: "Name",
+        name: "Inbounds",
         selector: "name",
         sortable: true,
         minWidth: "200px",
         cell: (row) => (
-          <div className="d-flex flex-xl-row flex-column align-items-xl-center align-items-start py-xl-0 py-1">
-            <div className="user-img ml-xl-0 ml-2">
-              <img
-                className="img-fluid rounded-circle"
-                height="36"
-                width="36"
-                src={row.image}
-                alt={row.name}
-              />
+          <div className={D.inbounds}>
+            <div className="col-1">
+              <span className={D.Title}>Location</span>
+              <span className={D.location}>{row.currentLocation}</span>
             </div>
-            <div className="user-info text-truncate ml-xl-50 ml-0">
-              <span
-                title={row.name}
-                className="d-block text-bold-500 text-truncate mb-0"
-              >
-                {row.name}
-              </span>
-              <small title={row.email}>{row.email}</small>
+            <div className="col-2">
+              <span className={D.Title}>Date</span>
+
+              <span className={D.date}>{row.date}</span>
+            </div>
+            <div className="col-3">
+              <span className={D.Title}>Qty</span>
+
+              <span className={D.qty}>{row.qty}</span>
             </div>
           </div>
         ),
       },
       {
-        name: "Date Created",
+        name: "Sales",
         selector: "date",
         sortable: true,
         cell: (row) => (
-          <p className="text-bold-500 text-truncate mb-0">{row.date}</p>
+          <div className={D.otherHolder}>
+            <div className="col-1">
+              <span className={D.Title}>Store</span>
+
+              <span className={D.reason}>{row.storename}</span>
+            </div>
+            <div className="col-2">
+              <span className={D.Title}>Qty</span>
+              <span className={D.otherQty}>{row.saleQty}</span>
+            </div>
+          </div>
         ),
       },
       {
-        name: "Status",
+        name: "Other reasons",
         selector: "status",
         sortable: true,
         cell: (row) => (
-          <Badge
-            color={row.status === "inactive" ? "light-danger" : "light-success"}
-            pill
-          >
-            {row.status}
-          </Badge>
+          <div className={D.otherHolder}>
+            <div className="col-1">
+              <span className={D.Title}>Reason</span>
+
+              <span className={D.reason}>{row.reason}</span>
+            </div>
+            <div className="col-2">
+              <span className={D.Title}>Qty</span>
+              <span className={D.otherQty}>{row.otherQty}</span>
+            </div>
+          </div>
         ),
-      }
+      },
     ],
 
     data: [
       {
-        image: require("../../../assets/img/portrait/small/avatar-s-2.jpg"),
-        name: "Alyss Lillecrop",
-        email: "alillecrop0@twitpic.com",
-        date: "May 13, 2018",
-        status: "active",
-        revenue: "$32,000",
-        ratings: "good"
+        date: "2015-10-2",
+        currentLocation: "Cairo",
+        qty: "5",
+        storename: "interstellargoods.myshopify.com",
+        saleQty: 9,
+        reason: "damaged",
+        otherQty: 9,
       },
       {
-        image: require("../../../assets/img/portrait/small/avatar-s-1.jpg"),
-        name: "Shep Pentlow",
-        email: "spentlow1@home.pl",
-        date: "June 5, 2019",
-        status: "active",
-        revenue: "$50,000",
-        ratings: "good"
+        date: "2015-10-2",
+        currentLocation: "Cairo",
+        qty: "5",
+        storename: "interstellargoods.myshopify.com",
+        saleQty: 9,
+        reason: "damaged",
+        otherQty: 9,
       },
     ],
     filteredData: [],
     value: "",
   };
 
-  handleFilter = (e) => {
+  render() {
+    let { data, columns, value, filteredData } = this.state;
+    return (
+      <Card>
+        <CardBody className="rdt_Wrapper">
+          <DataTable
+            className="dataTable-custom"
+            data={value.length ? filteredData : data}
+            columns={columns}
+            noHeader
+          />
+        </CardBody>
+      </Card>
+    );
+  }
+}
+
+export default DataTableCustomBK;
+
+/* search mechanism 
+handleFilter = (e) => {
     let value = e.target.value;
     let data = this.state.data;
     let filteredData = this.state.filteredData;
@@ -176,25 +177,6 @@ class DataTableCustomBK extends React.Component {
     }
   };
 
-  render() {
-    let { data, columns, value, filteredData } = this.state;
-    return (
-      <Card>
-        <CardBody className="rdt_Wrapper">
-          <DataTable
-            className="dataTable-custom"
-            data={value.length ? filteredData : data}
-            columns={columns}
-            noHeader
-            subHeader
-            subHeaderComponent={
-              <CustomHeader value={value} handleFilter={this.handleFilter} />
-            }
-          />
-        </CardBody>
-      </Card>
-    );
-  }
-}
 
-export default DataTableCustomBK;
+
+*/
