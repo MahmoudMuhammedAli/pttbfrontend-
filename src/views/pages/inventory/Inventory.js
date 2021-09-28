@@ -406,11 +406,11 @@ class Inventory extends React.Component {
                                   {/*TODO: data table */}
                                   <div className="d-flex flex-column flex-md-column mb-2">
                                     {/*//! Table of tables <DataTableCustom /> */}
-                                    {/*//! another Style <DataTableCustomBK/> */}
+                                    <DataTableCustomBK/> 
                                     {/* option 3 TODO: add actual data*/}
-                                    <DataTableInbounds data={childData.inbounds.child} />
+                                    {/* <DataTableInbounds data={childData.inbounds.child} />
                                     <DataTableSale data={childData.sales.child} />
-                                    <DataTableOthers  data={childData.other_use.child}/>
+                                    <DataTableOthers  data={childData.other_use.child}/> */}
                                   </div>
                                 </div>
                                 <div className="d-flex flex-column flex-md-row justify-content-end navbar-light pt-1 pb-1 px-1">

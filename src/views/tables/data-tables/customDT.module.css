@@ -1,23 +1,36 @@
 .inbounds, 
 .otherHolder{
-  border-left:2px solid rgb(0, 0, 0);  
+  border-left:2px solid #c4c4c4;  
   padding:10px 0; 
 }
 .inbounds{
   border:none;
+  
 }
 .Title{ 
+  color:#3c92dc;
   font-weight: bold; 
   margin-right: 5px;
 }
 .headers{
   width: 100%;
   font-size: 1.5rem;
-  text-align: center;
+  text-align: left;
+  
 }
 .cardBody{
   width: 80%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.col, .colQty{
+  margin: 10px;
+}
+
+.colQty{
+  text-align: left;
+}
+.locationSVG{
+  margin-left:-25px;
 }
