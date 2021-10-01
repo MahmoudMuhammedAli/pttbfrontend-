@@ -40,39 +40,41 @@ const res = [
 class DataTableCustomBK extends React.Component {
   state = {
     columns: [
-      {
-        name: "Inbounds",
-        selector: "name",
-        sortable: true,
-        minWidth: "200px",
-        minHeight: "200px",
-        cell: (row) => (
-          <div className={D.inbounds}>
-            <div className={D.col}>
-              <span className={`${D.Title} ${D.locationSVG}`}><MapPin size={20}/></span>
-              <span className={D.location}>{row.currentLocation}</span>
-            </div>
-            <div className={D.col}>
-              <span className={D.Title}><Calendar size={20}/></span>
+      // {
+      //   name: "Inbounds",
+      //   selector: "name",
+      //   sortable: true,
+      //   minWidth: "200px",
+      //   minHeight: "200px",
+      //   cell: (row) => (
+      //     <div className={D.inbounds}>
+      //       <div className={D.col}>
+      //         <span className={`${D.Title} ${D.locationSVG}`}><MapPin size={20}/></span>
+      //         <span className={D.location}>{row.currentLocation}</span>
+      //       </div>
+      //       <div className={D.col}>
+      //         <span className={D.Title}><Calendar size={20}/></span>
 
-              <span className={D.date}>{row.date}</span>
-            </div>
-            <div className={D.colQty}>
-              <span className={D.Title}><Package size={20} /></span>
-              <span className={D.qty}>{row.qty}</span>
-            </div>
-          </div>
-        ),
-      },
+      //         <span className={D.date}>{row.date}</span>
+      //       </div>
+      //       <div className={D.colQty}>
+      //         <span className={D.Title}><Package size={20} /></span>
+      //         <span className={D.qty}>{row.qty}</span>
+      //       </div>
+      //     </div>
+      //   ),
+      // },
       {
         name: "Sales",
-        selector: "date",
+        selector: "sales",
+        id: "sales",
         sortable: true,
-        minWidth: "300px",
+        center:true, 
+        
         cell: (row) => (
-          <div className={D.otherHolder}>
+          <div className={D.SalesHolder}>
             <div className={D.col}>
-              <span className={D.Title}><ShoppingCart size={20}/></span>
+              <span className={D.Title}><ShoppingCart size={20}/> </span>
 
               <span className={D.reason}>{row.storename}</span>
             </div>
@@ -85,7 +87,9 @@ class DataTableCustomBK extends React.Component {
       },
       {
         name: "Other reasons",
-        selector: "status",
+        selector: "others",
+        id : "others", 
+        center:true, 
         sortable: true,
         cell: (row) => (
           <div className={D.otherHolder}>

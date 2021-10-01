@@ -1,9 +1,8 @@
 .inbounds, 
 .otherHolder{
-  border-left:2px solid #c4c4c4;  
   padding:10px 0; 
 }
-.inbounds{
+.inbounds, .SalesHolder{
   border:none;
   
 }
@@ -33,4 +32,13 @@
 }
 .locationSVG{
   margin-left:-25px;
+}
+
+
+[data-column-id="others"].rdt_TableCol,
+[data-column-id="sales"].rdt_TableCol {
+  background-color: rgba(222, 184, 241, 0.489);
+  border-radius: 0.8rem 0 0 0;
+  color: rgb(78, 78, 78);
+  font-size: 0.8rem;
 }
