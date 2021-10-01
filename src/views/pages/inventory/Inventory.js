@@ -7,6 +7,7 @@ import DataTableInbounds from "../../tables/data-tables/DataTableInbounds";
 import DataTableBasic from "../../tables/data-tables/DataTableBasic";
 import DataTableCustom from "../../tables/data-tables/DataTableCustom";
 import DataTableCustomBK from "../../tables/data-tables/DataTableCustomBK";
+import DataTables from "../../tables/data-tables/DataTables";
 import {
   Card,
   CardBody,
@@ -407,10 +408,11 @@ class Inventory extends React.Component {
                                   <div className="d-flex flex-column flex-md-column mb-2">
                                     {/*//! Table of tables <DataTableCustom /> */}
                                     <DataTableCustomBK/> 
-                                    {/* option 3 TODO: add actual data*/}
+                               
                                     {/* <DataTableInbounds data={childData.inbounds.child} />
                                     <DataTableSale data={childData.sales.child} />
                                     <DataTableOthers  data={childData.other_use.child}/> */}
+                                    <DataTables/>
                                   </div>
                                 </div>
                                 <div className="d-flex flex-column flex-md-row justify-content-end navbar-light pt-1 pb-1 px-1">
