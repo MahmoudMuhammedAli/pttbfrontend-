@@ -3,26 +3,43 @@ import { Card, CardBody, CardHeader, CardTitle } from "reactstrap";
 import DataTable from "react-data-table-component";
 import { RefreshCcw, ChevronDown, ChevronUp } from "react-feather";
 
-const columns = [
-  {
-    name: "Date",
-    selector: "date",
-    center: true,
-    sortable: true,
-  },
-  {
-    name: "Current Location",
-    selector: "location",
-    center: true,
-    sortable: true,
-  },
-  {
-    name: "Qty",
-    selector: "qty",
-    center: true,
-    sortable: true,
-  },
-];
+const columns =
+  window.innerWidth > 560
+    ? [
+        {
+          name: "Date",
+          selector: "date",
+          center: true,
+          sortable: true,
+        },
+        {
+          name: "Current Location",
+          selector: "location",
+          center: true,
+          sortable: true,
+        },
+        {
+          name: "Qty",
+          selector: "qty",
+          center: true,
+          sortable: true,
+        },
+      ]
+    : [
+        {
+          name: "Date",
+         
+          
+          sortable: true,
+          cell: (row) => (
+              <div className="d-flex my-3 w-10 flex-wrap">
+                <p className="pr-2">{row.date}</p>
+                <p className="pr-2">{row.location}</p>
+                <p >{row.qty}</p>
+              </div>
+          ),
+        },
+      ];
 
 const data = [
   {
@@ -32,7 +49,7 @@ const data = [
   },
   {
     date: "5/25/2021",
-    location: "West Kelowna",
+    location: "cairo",
     qty: 2,
   },
   {
@@ -531,7 +548,8 @@ function DataTablePagination() {
   const [show, setShow] = useState(false);
   return (
     <Card>
-      <div className="d-flex flex-row gap-3 cursor-pointer"
+      <div
+        className="d-flex flex-row gap-3 cursor-pointer"
         onClick={() => {
           setShow(!show);
         }}
@@ -551,6 +569,7 @@ function DataTablePagination() {
               data={data}
               columns={columns}
               noHeader
+              responsive
               pagination={data.length > 10}
             />
           </React.Fragment>

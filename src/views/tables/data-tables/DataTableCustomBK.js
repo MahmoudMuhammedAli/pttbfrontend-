@@ -124,6 +124,15 @@ class DataTableCustomBK extends React.Component {
         saleQty: 9,
         reason: "damaged",
         otherQty: 9,
+      },
+      {
+        date: "2015-10-2",
+        currentLocation: "Cairo",
+        qty: "5",
+        storename: "interstellargoods.myshopify.com",
+        saleQty: 9,
+        reason: "damaged",
+        otherQty: 9,
       }
     ],
     filteredData: [],
