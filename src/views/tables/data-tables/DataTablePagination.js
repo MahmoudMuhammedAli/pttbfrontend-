@@ -3,7 +3,7 @@ import { Card, CardBody} from "reactstrap";
 import DataTable from "react-data-table-component";
 import { MapPin, Calendar, Package, ChevronUp } from "react-feather";
 import D from "./customDT.module.css";
-
+import "./global.css"
 
 const columns =
   window.innerWidth > 560
@@ -30,6 +30,7 @@ const columns =
     : [
         {
           name: "Info",
+          id: "info", 
           sortable: true,
           cell: (row) => (
             <div className="d-flex my-3 w-10 flex-wrap flex-column">

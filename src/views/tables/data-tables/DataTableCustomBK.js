@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Card,
   CardBody,
@@ -20,137 +20,109 @@ import {
   HelpCircle,
 } from "react-feather";
 import D from "./customDT.module.css";
-import "./customDT.module.css" ; 
+import "./customDT.module.css";
+import "./global.css";
 
+function DataTableCustomBK() {
+  const [columns, setColumns] = useState([
+    {
+      name: "Sales",
+      selector: "sales",
+      id: "sales",
+      sortable: true,
+      center: true,
+      cell: (row) => (
+        <div className={D.SalesHolder}>
+          <div className={D.col}>
+            <span className={D.Title}>
+              <ShoppingCart size={20} />{" "}
+            </span>
 
-class DataTableCustomBK extends React.Component {
-  state = {
-    columns: [
-      // {
-      //   name: "Inbounds",
-      //   selector: "name",
-      //   sortable: true,
-      //   minWidth: "200px",
-      //   minHeight: "200px",
-      //   cell: (row) => (
-      //     <div className={D.inbounds}>
-      //       <div className={D.col}>
-      //         <span className={`${D.Title} ${D.locationSVG}`}><MapPin size={20}/></span>
-      //         <span className={D.location}>{row.currentLocation}</span>
-      //       </div>
-      //       <div className={D.col}>
-      //         <span className={D.Title}><Calendar size={20}/></span>
-
-      //         <span className={D.date}>{row.date}</span>
-      //       </div>
-      //       <div className={D.colQty}>
-      //         <span className={D.Title}><Package size={20} /></span>
-      //         <span className={D.qty}>{row.qty}</span>
-      //       </div>
-      //     </div>
-      //   ),
-      // },
-      {
-        name: "Sales",
-        selector: "sales",
-        id: "sales",
-        sortable: true,
-
-        cell: (row) => (
-          <div className={D.SalesHolder}>
-            <div className={D.col}>
-              <span className={D.Title}>
-                <ShoppingCart size={20} />{" "}
-              </span>
-
-              <span className={D.reason}>{row.storename}</span>
-            </div>
-            <div className={D.colQty}>
-              <span className={D.Title}>
-                <Package size={20} />
-              </span>
-              <span className={D.otherQty}>{row.saleQty}</span>
-            </div>
+            <span className={D.reason}>{row.storename}</span>
           </div>
-        ),
-      },
-      {
-        name: "Other reasons",
-        selector: "others",
-        id: "others",
-
-        sortable: true,
-        cell: (row) => (
-          <div className={D.otherHolder}>
-            <div className={D.col}>
-              <span className={D.Title}>
-                <HelpCircle size={20} />
-              </span>
-
-              <span className={D.reason}>{row.reason}</span>
-            </div>
-            <div className={D.colQty}>
-              <span className={D.Title}>
-                <Package size={20} />
-              </span>
-              <span className={D.otherQty}>{row.otherQty}</span>
-            </div>
+          <div className={D.colQty}>
+            <span className={D.Title}>
+              <Package size={20} />
+            </span>
+            <span className={D.otherQty}>{row.saleQty}</span>
           </div>
-        ),
-      },
-    ],
+        </div>
+      ),
+    },
+    {
+      name: "Other reasons",
+      selector: "others",
+      id: "others",
+      center: true,
+      sortable: true,
+      cell: (row) => (
+        <div>
+          {(row.reason || row.otherQty) && (
+            <div>
+              <div className={D.col}>
+                <span className={D.Title}>
+                  <HelpCircle size={20} />
+                </span>
 
-    data: [
-      {
-        date: "2015-10-2",
-        currentLocation: "Cairo",
-        qty: "5",
-        storename: "interstellargoods.myshopify.com",
-        saleQty: 9,
-        reason: "damaged",
-        otherQty: 9,
-      },
-      {
-        date: "2015-10-2",
-        currentLocation: "Cairo",
-        qty: "5",
-        storename: "interstellargoods.myshopify.com",
-        saleQty: 9,
-        reason: "damaged",
-        otherQty: 9,
-      },
-      {
-        date: "2015-10-2",
-        currentLocation: "Cairo",
-        qty: "5",
-        storename: "interstellargoods.myshopify.com",
-        saleQty: 9,
-        reason: "damaged",
-        otherQty: 9,
-      },
-    ],
-    filteredData: [],
-    value: "",
-  };
+                <span className={D.reason}>{row.reason}</span>
+              </div>
+              <div className={D.colQty}>
+                <span className={D.Title}>
+                  <Package size={20} />
+                </span>
+                <span className={D.otherQty}>{row.otherQty}</span>
+              </div>
+            </div>
+          )}
+        </div>
+      ),
+    },
+  ]);
+  const [data, setData] = useState([
+    {
+      date: "2015-10-2",
+      currentLocation: "Cairo",
+      qty: "5",
+      storename: "interstellargoods",
+      saleQty: 9,
+      reason: "damaged",
+      otherQty: 9,
+    },
+    {
+      date: "2015-10-2",
+      currentLocation: "Cairo",
+      qty: "5",
+      storename: "interstellargoods",
+      saleQty: 9,
+      reason: "damaged",
+      otherQty: 9,
+    },
+    {
+      date: "2015-10-2",
+      currentLocation: "Cairo",
+      qty: "5",
+      storename: "interstellargoods",
+      saleQty: 9,
+      reason: "damaged",
+      otherQty: 9,
+    },
+  ]);
 
-  render() {
-    let { data, columns, value, filteredData } = this.state;
-    return (
-      <div className={D.customTable}>
-        <CardBody className="rdt_Wrapper">
-          <DataTable
-            className="dataTable-custom"
-            data={value.length ? filteredData : data}
-            columns={columns}
-            responsive
-            highlightOnHover
-            fixedHeader
-            noHeader
-          />
-        </CardBody>
-      </div>
-    );
-  }
+  return (
+    <div className={D.customTable}>
+      <CardBody className="rdt_Wrapper">
+        <DataTable
+          className="dataTable-custom"
+          data={data}
+          columns={columns}
+          responsive
+          highlightOnHover
+          fixedHeader
+          noHeader
+        />
+      </CardBody>
+    </div>
+  );
 }
 
 export default DataTableCustomBK;
@@ -190,3 +162,28 @@ handleFilter = (e) => {
 
 
 */
+/*inbounds column */
+// {
+//   name: "Inbounds",
+//   selector: "name",
+//   sortable: true,
+//   minWidth: "200px",
+//   minHeight: "200px",
+//   cell: (row) => (
+//     <div className={D.inbounds}>
+//       <div className={D.col}>
+//         <span className={`${D.Title} ${D.locationSVG}`}><MapPin size={20}/></span>
+//         <span className={D.location}>{row.currentLocation}</span>
+//       </div>
+//       <div className={D.col}>
+//         <span className={D.Title}><Calendar size={20}/></span>
+
+//         <span className={D.date}>{row.date}</span>
+//       </div>
+//       <div className={D.colQty}>
+//         <span className={D.Title}><Package size={20} /></span>
+//         <span className={D.qty}>{row.qty}</span>
+//       </div>
+//     </div>
+//   ),
+// },
