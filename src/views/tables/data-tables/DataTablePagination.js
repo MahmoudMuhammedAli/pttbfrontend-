@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { Card, CardBody, CardHeader, CardTitle } from "reactstrap";
+import { Card, CardBody} from "reactstrap";
 import DataTable from "react-data-table-component";
-import { RefreshCcw, ChevronDown, ChevronUp } from "react-feather";
+import { MapPin, Calendar, Package, ChevronUp } from "react-feather";
+import D from "./customDT.module.css";
+
 
 const columns =
   window.innerWidth > 560
@@ -27,16 +29,30 @@ const columns =
       ]
     : [
         {
-          name: "Date",
-         
-          
+          name: "Info",
           sortable: true,
           cell: (row) => (
-              <div className="d-flex my-3 w-10 flex-wrap">
-                <p className="pr-2">{row.date}</p>
-                <p className="pr-2">{row.location}</p>
-                <p >{row.qty}</p>
+            <div className="d-flex my-3 w-10 flex-wrap flex-column">
+              <div className={D.col}>
+                <span className={`${D.Title} ${D.locationSVG}`}>
+                  <MapPin size={20} />
+                </span>
+                <span className={D.location}>{row.location}</span>
               </div>
+              <div className={D.col}>
+                <span className={D.Title}>
+                  <Calendar size={20} />
+                </span>
+
+                <span className={D.date}>{row.date}</span>
+              </div>
+              <div className={D.colQty}>
+                <span className={D.Title}>
+                  <Package size={20} />
+                </span>
+                <span className={D.qty}>{row.qty}</span>
+              </div>
+            </div>
           ),
         },
       ];
@@ -570,6 +586,8 @@ function DataTablePagination() {
               columns={columns}
               noHeader
               responsive
+              striped = {window.innerWidth < 560}
+              highlightOnHover
               pagination={data.length > 10}
             />
           </React.Fragment>

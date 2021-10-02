@@ -1,4 +1,4 @@
-.inbounds, 
+
 .otherHolder{
   padding:10px 0; 
 }
@@ -6,6 +6,7 @@
   border:none;
   
 }
+
 .Title{ 
   color:#3c92dc;
   font-weight: bold; 
@@ -30,14 +31,14 @@
 .colQty{
   text-align: left;
 }
-.locationSVG{
-  margin-left:-25px;
-}
 
+.customTable{
+  margin-top:-5rem;
+}
 
 [data-column-id="others"].rdt_TableCol,
 [data-column-id="sales"].rdt_TableCol {
-  background-color: rgba(222, 184, 241, 0.489);
+  background-color: rgba(74, 49, 213, 0.489);
   border-radius: 0.8rem 0 0 0;
   color: rgb(78, 78, 78);
   font-size: 0.8rem;

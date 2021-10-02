@@ -9,33 +9,19 @@ import {
   Button,
 } from "reactstrap";
 import DataTable from "react-data-table-component";
-import DataTableBasic from "./DataTableBasic";
-import DataTableSale from "./DataTableSale";
-import DataTableOthers from "./DataTableOthers";
-import DataTableInbouds from "./DataTableInbounds";
-import { Star, Search, MapPin ,Calendar ,Package , ShoppingCart, HelpCircle} from "react-feather";
+
+import {
+  Star,
+  Search,
+  MapPin,
+  Calendar,
+  Package,
+  ShoppingCart,
+  HelpCircle,
+} from "react-feather";
 import D from "./customDT.module.css";
-const res = [
-  {
-    masterSKU: "mst-moft-laptop-stand-dark-grey",
-    inventory_details: {
-      inbounds: [{ date: "2015-10-2", currentLocation: "Cairo", qty: "5" }],
-      sales: [
-        {
-          storename: "interstellargoods.myshopify.com",
-          qty: 9,
-        },
-      ],
-      other_use: [
-        {
-          reason: "damaged",
-          qty: 9,
-        },
-      ],
-    },
-    balance_stock_left: -9,
-  },
-];
+import "./customDT.module.css" ; 
+
 
 class DataTableCustomBK extends React.Component {
   state = {
@@ -69,16 +55,20 @@ class DataTableCustomBK extends React.Component {
         selector: "sales",
         id: "sales",
         sortable: true,
-      
+
         cell: (row) => (
           <div className={D.SalesHolder}>
             <div className={D.col}>
-              <span className={D.Title}><ShoppingCart size={20}/> </span>
+              <span className={D.Title}>
+                <ShoppingCart size={20} />{" "}
+              </span>
 
               <span className={D.reason}>{row.storename}</span>
             </div>
             <div className={D.colQty}>
-              <span className={D.Title}><Package size={20} /></span>
+              <span className={D.Title}>
+                <Package size={20} />
+              </span>
               <span className={D.otherQty}>{row.saleQty}</span>
             </div>
           </div>
@@ -87,18 +77,22 @@ class DataTableCustomBK extends React.Component {
       {
         name: "Other reasons",
         selector: "others",
-        id : "others", 
-       
+        id: "others",
+
         sortable: true,
         cell: (row) => (
           <div className={D.otherHolder}>
             <div className={D.col}>
-              <span className={D.Title}><HelpCircle size={20} /></span>
+              <span className={D.Title}>
+                <HelpCircle size={20} />
+              </span>
 
               <span className={D.reason}>{row.reason}</span>
             </div>
             <div className={D.colQty}>
-              <span className={D.Title}><Package size={20}/></span>
+              <span className={D.Title}>
+                <Package size={20} />
+              </span>
               <span className={D.otherQty}>{row.otherQty}</span>
             </div>
           </div>
@@ -133,7 +127,7 @@ class DataTableCustomBK extends React.Component {
         saleQty: 9,
         reason: "damaged",
         otherQty: 9,
-      }
+      },
     ],
     filteredData: [],
     value: "",
@@ -142,20 +136,19 @@ class DataTableCustomBK extends React.Component {
   render() {
     let { data, columns, value, filteredData } = this.state;
     return (
-      <Card>
+      <div className={D.customTable}>
         <CardBody className="rdt_Wrapper">
           <DataTable
             className="dataTable-custom"
             data={value.length ? filteredData : data}
             columns={columns}
-            striped
             responsive
             highlightOnHover
             fixedHeader
             noHeader
           />
         </CardBody>
-      </Card>
+      </div>
     );
   }
 }
