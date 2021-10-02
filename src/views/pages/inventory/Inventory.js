@@ -93,6 +93,7 @@ class Inventory extends React.Component {
   ];
 
   state = {
+    clickedID: [],
     displayInbounds: false,
     data: null,
     agData: null,
@@ -410,31 +411,11 @@ class Inventory extends React.Component {
                                   <div className="d-flex flex-column flex-md-column mb-2">
                                     {/*//! Table of tables <DataTableCustom /> */}
                                     <div className="text-left ml-2">
-                                      <div
-                                        className="d-flex flex-row gap-3 cursor-pointer"
-                                        onClick={() => {
-                                          this.setState({
-                                            displayInbounds:
-                                              !this.state.displayInbounds,
-                                          });
-                                        }}
-                                      >
-                                        <ChevronUp />
-                                        <p className="text-capitalize text-bold-500 ml-2">
-                                          inbounds
-                                        </p>
-                                      </div>
-                                      {!this.state.displayInbounds && (
-                                        <>
-                                          <DataTablePagination />
-                                        </>
-                                      )}
+                                      <DataTablePagination />
                                     </div>
                                     <DataTableCustomBK />
 
-                                    {/* <DataTableInbounds data={childData.inbounds.child} />
-                                    <DataTableSale data={childData.sales.child} />
-                                    <DataTableOthers  data={childData.other_use.child}/> */}
+                                  
                                   </div>
                                 </div>
                                 <div className="d-flex flex-column flex-md-row justify-content-end navbar-light pt-1 pb-1 px-1">
@@ -671,7 +652,7 @@ export default connect(mapStateToProps, { getInventoryData })(Inventory);
               </span>
             </div>
             {expanded && (
-              <ReactTable
+              <ReactTable 
                 data={param}
                 columns={[
                   {

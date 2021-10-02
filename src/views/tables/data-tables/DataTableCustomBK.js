@@ -69,8 +69,7 @@ class DataTableCustomBK extends React.Component {
         selector: "sales",
         id: "sales",
         sortable: true,
-        center:true, 
-        
+      
         cell: (row) => (
           <div className={D.SalesHolder}>
             <div className={D.col}>
@@ -89,7 +88,7 @@ class DataTableCustomBK extends React.Component {
         name: "Other reasons",
         selector: "others",
         id : "others", 
-        center:true, 
+       
         sortable: true,
         cell: (row) => (
           <div className={D.otherHolder}>

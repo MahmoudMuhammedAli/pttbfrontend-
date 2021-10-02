@@ -1,318 +1,563 @@
-import React from "react"
-import { Card, CardBody, CardHeader, CardTitle } from "reactstrap"
-import DataTable from "react-data-table-component"
+import React, { useState } from "react";
+import { Card, CardBody, CardHeader, CardTitle } from "reactstrap";
+import DataTable from "react-data-table-component";
+import { RefreshCcw, ChevronDown, ChevronUp } from "react-feather";
 
 const columns = [
   {
     name: "Date",
-    selector: "Date",
-    sortable: true
+    selector: "date",
+    center: true,
+    sortable: true,
   },
   {
     name: "Current Location",
     selector: "location",
-    sortable: true
+    center: true,
+    sortable: true,
   },
   {
     name: "Qty",
     selector: "qty",
-    sortable: true
-  }
-]
+    center: true,
+    sortable: true,
+  },
+];
 
 const data = [
   {
-    id: "39-4771822",
-    name: "Irv Josselson",
-    Job_title: "Product Engineer",
-    skill: "Key Account Management",
-    salary: "$3723.32"
+    date: "11/7/2020",
+    location: "Dashev",
+    qty: 1,
   },
   {
-    id: "49-9001520",
-    name: "Herby Buxsy",
-    Job_title: "Web Designer IV",
-    skill: "VSAM",
-    salary: "$9690.39"
+    date: "5/25/2021",
+    location: "West Kelowna",
+    qty: 2,
   },
   {
-    id: "63-1420126",
-    name: "Erik Capron",
-    Job_title: "VP Marketing",
-    skill: "EP",
-    salary: "$2174.25"
+    date: "9/3/2021",
+    location: "Ostrov",
+    qty: 3,
   },
   {
-    id: "85-1701479",
-    name: "Min Elsmere",
-    Job_title: "Help Desk Operator",
-    skill: "Rotating Equipment",
-    salary: "$9698.06"
+    date: "7/29/2021",
+    location: "Quva",
+    qty: 4,
   },
   {
-    id: "25-6134818",
-    name: "Wilmette Beggin",
-    Job_title: "Sales Associate",
-    skill: "BJT",
-    salary: "$8023.20"
+    date: "9/5/2021",
+    location: "San Julian",
+    qty: 5,
   },
   {
-    id: "45-1674363",
-    name: "Karney Shovelton",
-    Job_title: "Actuary",
-    skill: "DV",
-    salary: "$2954.95"
+    date: "9/25/2021",
+    location: "Oslo",
+    qty: 6,
   },
   {
-    id: "82-5283205",
-    name: "Anya Tumbelty",
-    Job_title: "Project Manager",
-    skill: "DFS",
-    salary: "$4586.59"
+    date: "5/14/2021",
+    location: "Purwasari",
+    qty: 7,
   },
   {
-    id: "20-7192766",
-    name: "Gates Conradie",
-    Job_title: "Cost Accountant",
-    skill: "Ultrasonics",
-    salary: "$8205.23"
+    date: "2/19/2021",
+    location: "Santo Domingo",
+    qty: 8,
   },
   {
-    id: "56-5503064",
-    name: "Derron Dahlback",
-    Job_title: "Dental Hygienist",
-    skill: "VBAC",
-    salary: "$6907.90"
+    date: "5/29/2021",
+    location: "Warungsugan",
+    qty: 9,
   },
   {
-    id: "88-5128610",
-    name: "Bernarr Tydeman",
-    Job_title: "Senior Cost Accountant",
-    skill: "Image Manipulation",
-    salary: "$7593.62"
+    date: "10/25/2020",
+    location: "Město Libavá",
+    qty: 10,
   },
   {
-    id: "51-7471492",
-    name: "Sibyl Amthor",
-    Job_title: "Nurse",
-    skill: "LMS Test.Lab",
-    salary: "$6507.97"
+    date: "3/3/2021",
+    location: "Galitsy",
+    qty: 11,
   },
   {
-    id: "50-6598195",
-    name: "Quincy Founds",
-    Job_title: "Tax Accountant",
-    skill: "WSE",
-    salary: "$4039.51"
+    date: "5/3/2021",
+    location: "Paris 09",
+    qty: 12,
   },
   {
-    id: "46-4885608",
-    name: "Richmond McKitterick",
-    Job_title: "Technical Writer",
-    skill: "mLearning",
-    salary: "$5264.54"
+    date: "1/15/2021",
+    location: "Haikou",
+    qty: 13,
   },
   {
-    id: "17-3568868",
-    name: "Joyous Cundey",
-    Job_title: "Assistant Media Planner",
-    skill: "MP3",
-    salary: "$2591.20"
+    date: "11/15/2020",
+    location: "Seroa",
+    qty: 14,
   },
   {
-    id: "34-1010373",
-    name: "Ruttger Heatly",
-    Job_title: "Database Administrator II",
-    skill: "FPA",
-    salary: "$2755.98"
+    date: "10/5/2020",
+    location: "Jinghong",
+    qty: 15,
   },
   {
-    id: "02-0334091",
-    name: "Emmet Snadden",
-    Job_title: "Sales Associate",
-    skill: "UL",
-    salary: "$7346.24"
+    date: "4/29/2021",
+    location: "Moba",
+    qty: 16,
   },
   {
-    id: "56-6166703",
-    name: "Randal Slatter",
-    Job_title: "GIS Technical Architect",
-    skill: "Channel Partners",
-    salary: "$4138.58"
+    date: "10/22/2020",
+    location: "Pécs",
+    qty: 17,
   },
   {
-    id: "56-2788303",
-    name: "Misty Farrall",
-    Job_title: "Biostatistician IV",
-    skill: "VPLS",
-    salary: "$4309.57"
+    date: "2/27/2021",
+    location: "Roshnik",
+    qty: 18,
   },
   {
-    id: "62-7041114",
-    name: "Leoine Angrick",
-    Job_title: "Nurse Practicioner",
-    skill: "Web Analytics",
-    salary: "$9867.89"
+    date: "12/11/2020",
+    location: "Bella Vista",
+    qty: 19,
   },
   {
-    id: "63-5519247",
-    name: "Gusta MacVagh",
-    Job_title: "Research Associate",
-    skill: "MRPII",
-    salary: "$1259.87"
+    date: "1/22/2021",
+    location: "Vallehermoso",
+    qty: 20,
   },
   {
-    id: "02-8622207",
-    name: "Blakelee Trowler",
-    Job_title: "Nurse Practicioner",
-    skill: "Improvisation",
-    salary: "$5176.55"
+    date: "10/8/2020",
+    location: "Chaoyang",
+    qty: 21,
   },
   {
-    id: "34-9814193",
-    name: "Lyndsey Sumption",
-    Job_title: "Accountant II",
-    skill: "FPC 1",
-    salary: "$3615.70"
+    date: "4/28/2021",
+    location: "Pruchnik",
+    qty: 22,
   },
   {
-    id: "53-0772100",
-    name: "Cass Rainsdon",
-    Job_title: "Analyst Programmer",
-    skill: "Snow Leopard",
-    salary: "$2275.19"
+    date: "9/23/2021",
+    location: "South Tangerang",
+    qty: 23,
   },
   {
-    id: "68-6136006",
-    name: "Hussein Peatt",
-    Job_title: "Administrative Officer",
-    skill: "TWiki",
-    salary: "$2202.65"
+    date: "5/23/2021",
+    location: "Pradera",
+    qty: 24,
   },
   {
-    id: "52-8655965",
-    name: "Stanislas Weathey",
-    Job_title: "Physical Therapy Assistant",
-    skill: "NICU",
-    salary: "$1285.65"
+    date: "12/31/2020",
+    location: "Laju Kidul",
+    qty: 25,
   },
   {
-    id: "98-1533931",
-    name: "Sean Nurden",
-    Job_title: "Media Manager III",
-    skill: "Veterinary Medicine",
-    salary: "$2355.09"
+    date: "5/15/2021",
+    location: "Stalís",
+    qty: 26,
   },
   {
-    id: "80-6843020",
-    name: "Robert Burgott",
-    Job_title: "Technical Writer",
-    skill: "SQL PL",
-    salary: "$6181.63"
+    date: "3/31/2021",
+    location: "Pangnirtung",
+    qty: 27,
   },
   {
-    id: "05-2939471",
-    name: "Tamqrah Gawthorpe",
-    Job_title: "Mechanical Systems Engineer",
-    skill: "USDA",
-    salary: "$8087.90"
+    date: "8/3/2021",
+    location: "Vitrolles",
+    qty: 28,
   },
   {
-    id: "92-2002994",
-    name: "Dru O'Farrell",
-    Job_title: "Teacher",
-    skill: "DFU",
-    salary: "$6436.26"
+    date: "4/17/2021",
+    location: "Néos Skopós",
+    qty: 29,
   },
   {
-    id: "84-2461596",
-    name: "Paulette Coghlan",
-    Job_title: "Nuclear Power Engineer",
-    skill: "Substance Use Disorders",
-    salary: "$8865.40"
+    date: "3/12/2021",
+    location: "Sinajana Village",
+    qty: 30,
   },
   {
-    id: "54-0592230",
-    name: "Claire Franceschelli",
-    Job_title: "Nurse Practicioner",
-    skill: "LGBT Rights",
-    salary: "$6160.04"
+    date: "1/7/2021",
+    location: "Cartagena",
+    qty: 31,
   },
   {
-    id: "49-6724516",
-    name: "Clareta Dovidaitis",
-    Job_title: "Junior Executive",
-    skill: "AKTA",
-    salary: "$9334.82"
+    date: "10/23/2020",
+    location: "Kabankalan",
+    qty: 32,
   },
   {
-    id: "40-2963802",
-    name: "Samuel D'Angeli",
-    Job_title: "Editor",
-    skill: "Teaching Writing",
-    salary: "$9448.99"
+    date: "6/21/2021",
+    location: "Iraquara",
+    qty: 33,
   },
   {
-    id: "30-2534196",
-    name: "Kaia Gully",
-    Job_title: "Clinical Specialist",
-    skill: "Olefins",
-    salary: "$5114.83"
+    date: "4/11/2021",
+    location: "Xia’ertai",
+    qty: 34,
   },
   {
-    id: "04-6909567",
-    name: "Iris Tomowicz",
-    Job_title: "Payment Adjustment Coordinator",
-    skill: "Land Use Planning",
-    salary: "$3593.02"
+    date: "6/14/2021",
+    location: "Dukoh",
+    qty: 35,
   },
   {
-    id: "17-1972776",
-    name: "Mable Bowery",
-    Job_title: "Computer Systems Analyst IV",
-    skill: "IA32",
-    salary: "$8772.72"
+    date: "12/17/2020",
+    location: "Nizhniy Kurkuzhin",
+    qty: 36,
   },
   {
-    id: "58-9315753",
-    name: "Corbie Stickings",
-    Job_title: "Physical Therapy Assistant",
-    skill: "DGA",
-    salary: "$7216.57"
+    date: "10/18/2020",
+    location: "Wailolong",
+    qty: 37,
   },
   {
-    id: "99-2197211",
-    name: "Sabrina Ebanks",
-    Job_title: "Desktop Support Technician",
-    skill: "TBS",
-    salary: "$4153.62"
+    date: "12/25/2020",
+    location: "Powidz",
+    qty: 38,
   },
   {
-    id: "24-8358111",
-    name: "Benedetta Ripley",
-    Job_title: "Account Coordinator",
-    skill: "Air Compressors",
-    salary: "$4181.38"
+    date: "2/6/2021",
+    location: "Plaza de Caisán",
+    qty: 39,
   },
   {
-    id: "95-2063564",
-    name: "Clovis Lenthall",
-    Job_title: "Marketing Assistant",
-    skill: "RSA Security",
-    salary: "$4109.87"
-  }
-]
+    date: "11/15/2020",
+    location: "Bintuni",
+    qty: 40,
+  },
+  {
+    date: "4/14/2021",
+    location: "Binawara",
+    qty: 41,
+  },
+  {
+    date: "6/16/2021",
+    location: "Myrnyy",
+    qty: 42,
+  },
+  {
+    date: "12/15/2020",
+    location: "Babao",
+    qty: 43,
+  },
+  {
+    date: "2/13/2021",
+    location: "Starý Bohumín",
+    qty: 44,
+  },
+  {
+    date: "6/4/2021",
+    location: "Acul du Nord",
+    qty: 45,
+  },
+  {
+    date: "2/6/2021",
+    location: "Chervonopartyzans’k",
+    qty: 46,
+  },
+  {
+    date: "11/6/2020",
+    location: "Xinzhaiping",
+    qty: 47,
+  },
+  {
+    date: "9/18/2021",
+    location: "Nouna",
+    qty: 48,
+  },
+  {
+    date: "12/2/2020",
+    location: "Serra de Água",
+    qty: 49,
+  },
+  {
+    date: "6/2/2021",
+    location: "Tsumeb",
+    qty: 50,
+  },
+  {
+    date: "10/27/2020",
+    location: "Huangliang",
+    qty: 51,
+  },
+  {
+    date: "7/21/2021",
+    location: "Matingain",
+    qty: 52,
+  },
+  {
+    date: "1/4/2021",
+    location: "Bengubelan",
+    qty: 53,
+  },
+  {
+    date: "4/27/2021",
+    location: "Caála",
+    qty: 54,
+  },
+  {
+    date: "1/22/2021",
+    location: "Camangcamang",
+    qty: 55,
+  },
+  {
+    date: "10/19/2020",
+    location: "Vellinge",
+    qty: 56,
+  },
+  {
+    date: "9/21/2021",
+    location: "José Bonifácio",
+    qty: 57,
+  },
+  {
+    date: "1/13/2021",
+    location: "Kurchaloy",
+    qty: 58,
+  },
+  {
+    date: "12/14/2020",
+    location: "Talisay",
+    qty: 59,
+  },
+  {
+    date: "7/21/2021",
+    location: "Lukavec",
+    qty: 60,
+  },
+  {
+    date: "10/31/2020",
+    location: "Riachos",
+    qty: 61,
+  },
+  {
+    date: "4/27/2021",
+    location: "La Oroya",
+    qty: 62,
+  },
+  {
+    date: "4/26/2021",
+    location: "Ridder",
+    qty: 63,
+  },
+  {
+    date: "11/18/2020",
+    location: "Plereyan",
+    qty: 64,
+  },
+  {
+    date: "1/13/2021",
+    location: "Katyr-Yurt",
+    qty: 65,
+  },
+  {
+    date: "10/1/2021",
+    location: "Selínia",
+    qty: 66,
+  },
+  {
+    date: "5/5/2021",
+    location: "Springfield",
+    qty: 67,
+  },
+  {
+    date: "9/5/2021",
+    location: "Mashava",
+    qty: 68,
+  },
+  {
+    date: "6/22/2021",
+    location: "Frederiksberg",
+    qty: 69,
+  },
+  {
+    date: "8/21/2021",
+    location: "Cocieri",
+    qty: 70,
+  },
+  {
+    date: "11/24/2020",
+    location: "Viçosa",
+    qty: 71,
+  },
+  {
+    date: "8/6/2021",
+    location: "Batan",
+    qty: 72,
+  },
+  {
+    date: "2/1/2021",
+    location: "Simpang",
+    qty: 73,
+  },
+  {
+    date: "7/13/2021",
+    location: "Lages",
+    qty: 74,
+  },
+  {
+    date: "11/27/2020",
+    location: "Sarlat-la-Canéda",
+    qty: 75,
+  },
+  {
+    date: "4/13/2021",
+    location: "Iţsā",
+    qty: 76,
+  },
+  {
+    date: "10/29/2020",
+    location: "Rumphi",
+    qty: 77,
+  },
+  {
+    date: "10/5/2020",
+    location: "Gérakas",
+    qty: 78,
+  },
+  {
+    date: "4/28/2021",
+    location: "Jinshan",
+    qty: 79,
+  },
+  {
+    date: "3/14/2021",
+    location: "Diaowei",
+    qty: 80,
+  },
+  {
+    date: "12/24/2020",
+    location: "Antang",
+    qty: 81,
+  },
+  {
+    date: "10/2/2020",
+    location: "Tovačov",
+    qty: 82,
+  },
+  {
+    date: "12/31/2020",
+    location: "Las Higueras",
+    qty: 83,
+  },
+  {
+    date: "3/20/2021",
+    location: "Manukaka",
+    qty: 84,
+  },
+  {
+    date: "11/27/2020",
+    location: "Qiaosi",
+    qty: 85,
+  },
+  {
+    date: "7/21/2021",
+    location: "Inanwatan",
+    qty: 86,
+  },
+  {
+    date: "4/19/2021",
+    location: "Saratov",
+    qty: 87,
+  },
+  {
+    date: "5/24/2021",
+    location: "Masape",
+    qty: 88,
+  },
+  {
+    date: "11/8/2020",
+    location: "Bergen",
+    qty: 89,
+  },
+  {
+    date: "2/20/2021",
+    location: "Gjinkar",
+    qty: 90,
+  },
+  {
+    date: "6/10/2021",
+    location: "Węgorzyno",
+    qty: 91,
+  },
+  {
+    date: "3/27/2021",
+    location: "Tallahassee",
+    qty: 92,
+  },
+  {
+    date: "5/11/2021",
+    location: "Jianghua",
+    qty: 93,
+  },
+  {
+    date: "8/2/2021",
+    location: "Širvintos",
+    qty: 94,
+  },
+  {
+    date: "9/14/2021",
+    location: "Qandala",
+    qty: 95,
+  },
+  {
+    date: "8/24/2021",
+    location: "Chencai",
+    qty: 96,
+  },
+  {
+    date: "4/26/2021",
+    location: "Andrushivka",
+    qty: 97,
+  },
+  {
+    date: "1/19/2021",
+    location: "Bizana",
+    qty: 98,
+  },
+  {
+    date: "8/26/2021",
+    location: "Linköping",
+    qty: 99,
+  },
+  {
+    date: "4/21/2021",
+    location: "Lindong",
+    qty: 100,
+  },
+];
 
-class DataTablePagination extends React.Component {
-  render() {
-    return (
-      <Card>
-        <CardBody>
-          <DataTable data={data} columns={columns} noHeader pagination />
-        </CardBody>
-      </Card>
-    )
-  }
+function DataTablePagination() {
+  const [show, setShow] = useState(false);
+  return (
+    <Card>
+      <div className="d-flex flex-row gap-3 cursor-pointer"
+        onClick={() => {
+          setShow(!show);
+        }}
+      >
+        <ChevronUp
+          style={{
+            transition: ".15s",
+            transform: show ? "rotate(90deg)" : "rotate(180deg)",
+          }}
+        />
+        <p className="text-capitalize text-bold-600 ml-2">inbounds</p>
+      </div>
+      <CardBody>
+        {show && (
+          <React.Fragment>
+            <DataTable
+              data={data}
+              columns={columns}
+              noHeader
+              pagination={data.length > 10}
+            />
+          </React.Fragment>
+        )}
+      </CardBody>
+    </Card>
+  );
 }
 
-export default DataTablePagination
+export default DataTablePagination;
