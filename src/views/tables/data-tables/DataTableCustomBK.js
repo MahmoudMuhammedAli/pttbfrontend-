@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Card,
   CardBody,
@@ -107,19 +107,102 @@ function DataTableCustomBK() {
       otherQty: 9,
     },
   ]);
+  const [saleCol, setSaleCol] = useState([
+    {
+      name: "Sales",
+      selector: "sales",
+      id: "sales",
+      sortable: true,
+  
+      cell: (row) => (
+        <div className={D.SalesHolder}>
+          <div className={D.col}>
+            <span className={D.Title}>
+              <ShoppingCart size={20} />{" "}
+            </span>
 
+            <span className={D.reason}>{row.storename}</span>
+          </div>
+          <div className={D.colQty}>
+            <span className={D.Title}>
+              <Package size={20} />
+            </span>
+            <span className={D.otherQty}>{row.saleQty}</span>
+          </div>
+        </div>
+      ),
+    },
+  ]);
+  const [otherCol, setOtherCol] = useState([
+    {
+      name: "Other reasons",
+      selector: "others",
+      id: "others",
+      sortable: true,
+      cell: (row) => (
+        <div>
+          {(row.reason || row.otherQty) && (
+            <div>
+              <div className={D.col}>
+                <span className={D.Title}>
+                  <HelpCircle size={20} />
+                </span>
+
+                <span className={D.reason}>{row.reason}</span>
+              </div>
+              <div className={D.colQty}>
+                <span className={D.Title}>
+                  <Package size={20} />
+                </span>
+                <span className={D.otherQty}>{row.otherQty}</span>
+              </div>
+            </div>
+          )}
+        </div>
+      ),
+    },
+  ]);
+  const [width, setWidth] = useState(window.innerWidth);
+  useEffect(() => {
+    setWidth(window.innerWidth);
+  }, [width]);
   return (
     <div className={D.customTable}>
       <CardBody className="rdt_Wrapper">
-        <DataTable
-          className="dataTable-custom"
-          data={data}
-          columns={columns}
-          responsive
-          highlightOnHover
-          fixedHeader
-          noHeader
-        />
+        {width > 600 ? (
+          <>
+            <DataTable
+              className="dataTable-custom"
+              data={data}
+              columns={columns}
+              responsive
+              highlightOnHover
+              fixedHeader
+              noHeader
+            />
+          </>
+        ) : (
+          <>
+            <DataTable
+              className="dataTable-custom"
+              data={data}
+              columns={saleCol}
+              responsive
+              highlightOnHover
+              fixedHeader
+              noHeader
+            />
+            <DataTable
+              className="dataTable-custom"
+              data={data}
+              columns={otherCol}
+              responsive
+              highlightOnHover
+              fixedHeader
+              noHeader
+            />
+          </>
+        )}
       </CardBody>
     </div>
   );
