@@ -30,7 +30,7 @@
 .customTable{
   margin-top:-6rem;
 }
-
+/*TODO figure out how to style the headers*/
 [data-column-id="others"].rdt_TableCol,
 [data-column-id="sales"].rdt_TableCol {
   background-color: rgba(74, 49, 213, 0.489);
