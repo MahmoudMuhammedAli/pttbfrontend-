@@ -18,19 +18,20 @@ import {
   Package,
   ShoppingCart,
   HelpCircle,
+  ChevronUp,
 } from "react-feather";
 import D from "./customDT.module.css";
 import "./customDT.module.css";
 import "./global.css";
 
-function DataTableCustomBK() {
+function DataTableCustomBK(props) {
   const [columns, setColumns] = useState([
     {
       name: "Sales",
       selector: "sales",
       id: "sales",
       sortable: true,
-      center: true,
+      maxWidth  : "33%" , 
       cell: (row) => (
         <div className={D.SalesHolder}>
           <div className={D.col}>
@@ -53,7 +54,7 @@ function DataTableCustomBK() {
       name: "Other reasons",
       selector: "others",
       id: "others",
-      center: true,
+      
       sortable: true,
       cell: (row) => (
         <div>
@@ -81,7 +82,7 @@ function DataTableCustomBK() {
   const [data, setData] = useState([
     {
       date: "2015-10-2",
-      currentLocation: "Cairo",
+      currentLocation: "london",
       qty: "5",
       storename: "interstellargoods",
       saleQty: 9,
@@ -113,7 +114,7 @@ function DataTableCustomBK() {
       selector: "sales",
       id: "sales",
       sortable: true,
-  
+
       cell: (row) => (
         <div className={D.SalesHolder}>
           <div className={D.col}>
@@ -162,14 +163,31 @@ function DataTableCustomBK() {
       ),
     },
   ]);
+  const [show, setShow] = useState(true);
+
   const [width, setWidth] = useState(window.innerWidth);
   useEffect(() => {
     setWidth(window.innerWidth);
   }, [width]);
   return (
     <div className={D.customTable}>
+      <div
+        className="d-flex flex-row gap-3 cursor-pointer  ml-2"
+        onClick={() => {
+          setShow(!show);
+        }}
+      >
+        {" "}
+        <ChevronUp
+          style={{
+            transition: ".15s",
+            transform: show ? "rotate(180deg)" : "rotate(90deg)",
+          }}
+        />
+        <p className="text-capitalize text-bold-600 ml-2">OutBounds</p>
+      </div>
       <CardBody className="rdt_Wrapper">
-        {width > 600 ? (
+        {width > 600 && show ? (
           <>
             <DataTable
               className="dataTable-custom"
@@ -181,7 +199,7 @@ function DataTableCustomBK() {
               noHeader
             />
           </>
-        ) : (
+        ) : (show  && 
           <>
             <DataTable
               className="dataTable-custom"

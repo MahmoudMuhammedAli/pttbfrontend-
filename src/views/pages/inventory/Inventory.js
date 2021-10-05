@@ -410,16 +410,17 @@ class Inventory extends React.Component {
                                   {/*TODO: data table */}
                                   <div className="d-flex flex-column flex-md-column mb-2">
                                     {/*//! Table of tables <DataTableCustom /> */}
-                                    <div className="text-left ml-2">
+                                    <div className="text-left">
                                       <DataTablePagination />
                                     </div>
-                                    <DataTableCustomBK />
-
-                                  
+                                    <div>
+                                   
+                                      <DataTableCustomBK />
+                                    </div>
                                   </div>
                                 </div>
                                 <div className="d-flex flex-column flex-md-row justify-content-end navbar-light pt-1 pb-1 px-1">
-                                  <div className="title text-uppercase text-bold-600 mx-5">
+                                  <div className="title text-uppercase text-bold-600 mx-5 lg:text-right">
                                     Balance Stock Left
                                   </div>
                                   <div className="title text-bold-600">

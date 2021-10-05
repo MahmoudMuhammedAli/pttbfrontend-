@@ -9,6 +9,9 @@ const formSchema = Yup.object().shape({
     .oneOf([Yup.ref("newpass"), null], "Passwords must match")
     .required("Required")
 })
+const updatePassWord = () =>{
+
+}
 class ChangePassword extends React.Component {
   render() {
     return (
@@ -69,6 +72,7 @@ class ChangePassword extends React.Component {
                       className="mr-1 mb-1"
                       color="primary"
                       type="submit"
+                      onClick={updatePassWord}
                     >
                       Save Changes
                     </Button.Ripple>

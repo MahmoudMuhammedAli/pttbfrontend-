@@ -11,19 +11,19 @@ const columns =
         {
           name: "Date",
           selector: "date",
-          center: true,
+         
           sortable: true,
         },
         {
           name: "Current Location",
           selector: "location",
-          center: true,
+         
           sortable: true,
         },
         {
           name: "Qty",
           selector: "qty",
-          center: true,
+         
           sortable: true,
         },
       ]
@@ -566,7 +566,7 @@ function DataTablePagination() {
   return (
     <Card>
       <div
-        className="d-flex flex-row gap-3 cursor-pointer"
+        className="d-flex flex-row gap-3 cursor-pointer  ml-2"
         onClick={() => {
           setShow(!show);
         }}
