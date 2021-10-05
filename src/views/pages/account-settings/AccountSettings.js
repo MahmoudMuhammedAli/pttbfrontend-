@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 import {
   TabContent,
   TabPane,
@@ -6,46 +6,45 @@ import {
   NavItem,
   NavLink,
   Card,
-  CardBody
-} from "reactstrap"
-import classnames from "classnames"
-import { Settings, Lock, Info, Instagram, Link, Bell } from "react-feather"
-import GeneralTab from "./General"
-import ChangePassword from "./ChangePassword"
-import InfoTab from "./Info"
-import SocialLinks from "./SocialLinks"
-import Connection from "./Connection"
-import Notifications from "./Notifications"
-import Breadcrumbs from "../../../components/@vuexy/breadCrumbs/BreadCrumb"
+  CardBody,
+} from "reactstrap";
+import classnames from "classnames";
+import { Settings, Lock, Info, Instagram, Link, Bell } from "react-feather";
+import GeneralTab from "./General";
+import ChangePassword from "./ChangePassword";
+import InfoTab from "./Info";
+import SocialLinks from "./SocialLinks";
+import Connection from "./Connection";
+import Notifications from "./Notifications";
+import Breadcrumbs from "../../../components/@vuexy/breadCrumbs/BreadCrumb";
 
-import "../../../assets/scss/pages/account-settings.scss"
+import "../../../assets/scss/pages/account-settings.scss";
 
 class AccountSettings extends React.Component {
   state = {
     activeTab: "1",
-    windowWidth: null
-  }
+    windowWidth: null,
+  };
 
-  toggle = tab => {
+  toggle = (tab) => {
     this.setState({
-      activeTab: tab
-    })
-  }
+      activeTab: tab,
+    });
+  };
 
   updateWidth = () => {
-    this.setState({ windowWidth  : window.innerWidth })
-  }
+    this.setState({ windowWidth: window.innerWidth });
+  };
 
   componentDidMount() {
-    if(window !== undefined){
-      this.updateWidth()
-      window.addEventListener("resize", this.updateWidth)
+    if (window !== undefined) {
+      this.updateWidth();
+      window.addEventListener("resize", this.updateWidth);
     }
   }
-  
 
   render() {
-    let {windowWidth} = this.state
+    let { windowWidth } = this.state;
     return (
       <React.Fragment>
         <Breadcrumbs
@@ -53,34 +52,44 @@ class AccountSettings extends React.Component {
           breadCrumbParent="Pages"
           breadCrumbActive="Account Settings"
         />
-        <div className={`${windowWidth >= 769 ? "nav-vertical" : "account-setting-wrapper"}`}>
+        <div
+          className={`${
+            windowWidth >= 769 ? "nav-vertical" : "account-setting-wrapper"
+          }`}
+        >
           <Nav className="account-settings-tab nav-left mr-0 mr-sm-3" tabs>
             <NavItem>
               <NavLink
                 className={classnames({
-                  active: this.state.activeTab === "1"
+                  active: this.state.activeTab === "1",
                 })}
                 onClick={() => {
-                  this.toggle("1")
+                  this.toggle("1");
                 }}
               >
                 <Settings size={16} />
-                <span className="d-md-inline-block d-none align-middle ml-1">General</span>
+                <span className="d-md-inline-block d-none align-middle ml-1">
+                  General
+                </span>
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink
                 className={classnames({
-                  active: this.state.activeTab === "2"
+                  active: this.state.activeTab === "2",
                 })}
                 onClick={() => {
-                  this.toggle("2")
+                  this.toggle("2");
                 }}
               >
                 <Lock size={16} />
-                <span className="d-md-inline-block d-none align-middle ml-1">Change Password</span>
+                <span className="d-md-inline-block d-none align-middle ml-1">
+                  Change Password
+                </span>
               </NavLink>
             </NavItem>
+            {/* 
+            Other NavLinks to customize the Profile
             <NavItem>
               <NavLink
                 className={classnames({
@@ -132,7 +141,7 @@ class AccountSettings extends React.Component {
                 <Bell size={16} />
                 <span className="d-md-inline-block d-none align-middle ml-1">Notifications</span>
               </NavLink>
-            </NavItem>
+            </NavItem> */}
           </Nav>
           <Card>
             <CardBody>
@@ -160,8 +169,8 @@ class AccountSettings extends React.Component {
           </Card>
         </div>
       </React.Fragment>
-    )
+    );
   }
 }
 
-export default AccountSettings
+export default AccountSettings;
