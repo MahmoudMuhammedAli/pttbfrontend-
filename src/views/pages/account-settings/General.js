@@ -135,7 +135,7 @@ function General() {
               Save Changes
             </Button.Ripple>
             <Button.Ripple type="reset" color="danger" onClick={handleClear} outline>
-              Cancel
+              Cancel 
             </Button.Ripple>
           </Col>
         </Row>
