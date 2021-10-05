@@ -134,7 +134,7 @@ function General() {
             >
               Save Changes
             </Button.Ripple>
-            <Button.Ripple type="submit" color="danger" onClick={handleClear}>
+            <Button.Ripple type="reset" color="danger" onClick={handleClear} outline>
               Cancel
             </Button.Ripple>
           </Col>
