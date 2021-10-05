@@ -20,10 +20,11 @@ function ChangePassword() {
     setVisible(false);
   };
   const updatePassWord = () => {
-    /*Make sure the password match the confirm password */
     if (newPass && oldPass && newPassConfirm) {
+      /*Make sure the password match the confirm password */
       /*TODO: Compare the password to the one from the DB */
-      /* compare the newPassword to the old password */
+      /* compare the newPassword to the oldPassword */
+      /*if everything checks update the password */
     }
   };
 

@@ -28,7 +28,7 @@
 }
 
 .customTable{
-  margin-top:rem;
+  margin-top:-2rem;
 }
 /*TODO figure out how to style the headers*/
 [data-column-id="others"].rdt_TableCol,

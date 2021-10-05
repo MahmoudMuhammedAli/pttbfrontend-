@@ -93,6 +93,7 @@ class Inventory extends React.Component {
   ];
 
   state = {
+    selector: 2,
     clickedID: [],
     displayInbounds: false,
     data: null,
@@ -383,11 +384,18 @@ class Inventory extends React.Component {
                   {data && data.length > 0 ? (
                     <ReactTable
                       TheadComponent={(props) => null}
+                      className="-striped"
                       data={data}
                       columns={[
                         {
                           Header: "Name",
                           accessor: "masterSKU",
+                          // style: {
+                          //   background:
+                          //     this.state.selector % 2 === 0
+                          //       ? "rgba(240,240,240,1)"
+                          //       : "#fff",
+                          // },
                           enableRowSpan: true,
                           Cell: (props) => {
                             const rowData = props.original;
@@ -402,24 +410,31 @@ class Inventory extends React.Component {
                               }
                             );
                             return (
-                              <div>
-                                <div className="text-uppercase text-bold-600 text-left navbar-light pt-1 pb-1 px-1 mb-1">
+                              <div
+                                style={{
+                                  background:
+                                    this.state.selector % 2 === 0
+                                      ? "rgba(240,240,0,1)"
+                                      : "#fff",
+                                }}
+                              >
+                                {
+                                }
+                                <div className="text-uppercase text-bold-600 text-left  pt-1 pb-1 px-1 mb-1">
                                   {rowData.masterSKU || ""}
                                 </div>
                                 <div className="">
-                                  {/*TODO: data table */}
                                   <div className="d-flex flex-column flex-md-column mb-2">
                                     {/*//! Table of tables <DataTableCustom /> */}
                                     <div className="text-left">
                                       <DataTablePagination />
                                     </div>
                                     <div>
-                                   
                                       <DataTableCustomBK />
                                     </div>
                                   </div>
                                 </div>
-                                <div className="d-flex flex-column flex-md-row justify-content-end navbar-light pt-1 pb-1 px-1">
+                                <div className="d-flex flex-column flex-md-row justify-content-end  pt-1 pb-1 px-1">
                                   <div className="title text-uppercase text-bold-600 mx-5 lg:text-right">
                                     Balance Stock Left
                                   </div>
@@ -597,7 +612,7 @@ export default connect(mapStateToProps, { getInventoryData })(Inventory);
                 showPaginationBottom={false}
                 defaultPageSize={3}
                 className="-striped -highlight w-full"
-              />
+              /> 
             )}
           </React.Fragment>
         );
