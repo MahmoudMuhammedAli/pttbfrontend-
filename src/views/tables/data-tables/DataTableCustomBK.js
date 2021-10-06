@@ -187,7 +187,7 @@ function DataTableCustomBK(props) {
         <p className="text-capitalize text-bold-600 ml-2">OutBounds</p>
       </div>
       <div>
-        {width > 600 && show ? (
+        {width > 650 && show ? (
           <>
             <DataTable
               className="dataTable-custom"

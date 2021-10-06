@@ -43,7 +43,6 @@ import "react-table/react-table.css";
 import "../../../assets/scss/plugins/extensions/react-tables.scss";
 
 class Inventory extends React.Component {
-  
   state = {
     selector: 2,
     clickedID: [],
@@ -336,7 +335,6 @@ class Inventory extends React.Component {
                   {data && data.length > 0 ? (
                     <ReactTable
                       TheadComponent={(props) => null}
-                      className="-striped"
                       data={data}
                       columns={[
                         {
@@ -364,10 +362,12 @@ class Inventory extends React.Component {
                             return (
                               <div
                                 style={{
-                                  background:
-                                    this.state.selector % 2 === 0
-                                      ? "rgba(240,240,0,1)"
-                                      : "#fff",
+                                  // background:
+                                  //   this.state.selector % 2 === 0
+                                  //     ? "rgba(240,240,0,1)"
+                                  //     : "#fff",
+                                  boxShadow: "0px 20px 20px #e8e8e8",
+                                  margin: "0",
                                 }}
                               >
                                 {}
@@ -377,16 +377,16 @@ class Inventory extends React.Component {
                                 <div className="">
                                   <div className="d-flex flex-column flex-md-column mb-2">
                                     {/*//! Table of tables <DataTableCustom /> */}
-                                    <div className="text-left">
+                                    <div className="text-left px-3">
                                       <DataTablePagination />
                                     </div>
-                                    <div>
+                                    <div className="px-3">
                                       <DataTableCustomBK />
                                     </div>
                                   </div>
                                 </div>
-                                <div className="d-flex flex-column flex-md-row justify-content-end  pt-1 pb-1 px-1">
-                                  <div className="title text-uppercase text-bold-600 mx-5 lg:text-right">
+                                <div className="d-flex flex-row justify-content-end  pt-1 pb-1 px-1 border-bottom-4">
+                                  <div className="title text-uppercase text-bold-600  mx-1 ">
                                     Balance Stock Left
                                   </div>
                                   <div className="title text-bold-600">
@@ -399,7 +399,8 @@ class Inventory extends React.Component {
                         },
                       ]}
                       defaultPageSize={5}
-                      className="-striped -highlight w-full"
+                      // TODO: make it striped
+                      className="striped highlight w-full"
                       // Controlled props
                       page={this.state.page}
                       pageSize={this.state.pageSize}
