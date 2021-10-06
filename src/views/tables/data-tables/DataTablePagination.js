@@ -563,9 +563,9 @@ function DataTablePagination() {
     },
   ]);
   return (
-    <Card>
+    <div>
       <div
-        className="d-flex flex-row gap-3 cursor-pointer  ml-2 bg-transparent"
+        className="d-flex flex-row gap-3 cursor-pointer bg-transparent"
         onClick={() => {
           setShow(!show);
         }}
@@ -578,7 +578,7 @@ function DataTablePagination() {
         />
         <p className="text-capitalize text-bold-600 ml-2">inbounds</p>
       </div>
-      <CardBody>
+      <div>
         {show && (
           <React.Fragment>
             <DataTable
@@ -592,8 +592,8 @@ function DataTablePagination() {
             />
           </React.Fragment>
         )}
-      </CardBody>
-    </Card>
+      </div>
+    </div>
   );
 }
 

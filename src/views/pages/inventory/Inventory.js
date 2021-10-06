@@ -43,55 +43,7 @@ import "react-table/react-table.css";
 import "../../../assets/scss/plugins/extensions/react-tables.scss";
 
 class Inventory extends React.Component {
-  res = [
-    {
-      masterSKU: "mst-moft-laptop-stand-dark-grey",
-      inventory_details: {
-        inbounds: [],
-        sales: [
-          {
-            storename: "interstellargoods.myshopify.com",
-            qty: 9,
-          },
-        ],
-        other_use: [],
-      },
-      balance_stock_left: -9,
-    },
-    {
-      masterSKU: "mst-skinners-M-black-blue",
-      inventory_details: {
-        inbounds: [],
-        sales: [],
-        other_use: [],
-      },
-      balance_stock_left: 0,
-    },
-    {
-      masterSKU: "mst-determinant-face-mask-white",
-      inventory_details: {
-        inbounds: [],
-        sales: [
-          {
-            storename: "interstellargoods.myshopify.com",
-            qty: 231,
-          },
-        ],
-        other_use: [],
-      },
-      balance_stock_left: -231,
-    },
-    {
-      masterSKU: "mst-det-all-occasion-smart-shirt-pblue-reg-39",
-      inventory_details: {
-        inbounds: [],
-        sales: [],
-        other_use: [],
-      },
-      balance_stock_left: 0,
-    },
-  ];
-
+  
   state = {
     selector: 2,
     clickedID: [],
@@ -418,8 +370,7 @@ class Inventory extends React.Component {
                                       : "#fff",
                                 }}
                               >
-                                {
-                                }
+                                {}
                                 <div className="text-uppercase text-bold-600 text-left  pt-1 pb-1 px-1 mb-1">
                                   {rowData.masterSKU || ""}
                                 </div>

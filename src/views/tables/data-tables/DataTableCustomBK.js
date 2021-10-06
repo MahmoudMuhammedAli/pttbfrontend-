@@ -172,7 +172,7 @@ function DataTableCustomBK(props) {
   return (
     <div className={D.customTable}>
       <div
-        className="d-flex flex-row gap-3 cursor-pointer  ml-2"
+        className="d-flex flex-row gap-3 cursor-pointer  "
         onClick={() => {
           setShow(!show);
         }}
@@ -186,7 +186,7 @@ function DataTableCustomBK(props) {
         />
         <p className="text-capitalize text-bold-600 ml-2">OutBounds</p>
       </div>
-      <CardBody className="rdt_Wrapper">
+      <div>
         {width > 600 && show ? (
           <>
             <DataTable
@@ -209,6 +209,7 @@ function DataTableCustomBK(props) {
               highlightOnHover
               fixedHeader
               noHeader
+             
             />
             <DataTable
               className="dataTable-custom"
@@ -221,7 +222,7 @@ function DataTableCustomBK(props) {
             />
           </>
         )}
-      </CardBody>
+      </div>
     </div>
   );
 }
