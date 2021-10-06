@@ -360,27 +360,28 @@ class Inventory extends React.Component {
                               }
                             );
                             return (
-                              <div
+                              <div 
                                 style={{
                                   // background:
                                   //   this.state.selector % 2 === 0
                                   //     ? "rgba(240,240,0,1)"
                                   //     : "#fff",
-                                  boxShadow: "0px 20px 20px #e8e8e8",
+                                  boxShadow: "0px 20px 20px #eaeaea",
                                   margin: "0",
+                                  borderRadius: "1rem",
                                 }}
                               >
-                                {}
+                               
                                 <div className="text-uppercase text-bold-600 text-left  pt-1 pb-1 px-1 mb-1">
                                   {rowData.masterSKU || ""}
                                 </div>
                                 <div className="">
                                   <div className="d-flex flex-column flex-md-column mb-2">
                                     {/*//! Table of tables <DataTableCustom /> */}
-                                    <div className="text-left px-3">
+                                    <div className="text-left px-3 ">
                                       <DataTablePagination />
                                     </div>
-                                    <div className="px-3">
+                                    <div className="px-3 ">
                                       <DataTableCustomBK />
                                     </div>
                                   </div>
