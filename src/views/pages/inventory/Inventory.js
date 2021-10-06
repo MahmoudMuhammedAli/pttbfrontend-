@@ -360,7 +360,7 @@ class Inventory extends React.Component {
                               }
                             );
                             return (
-                              <div 
+                              <div
                                 style={{
                                   // background:
                                   //   this.state.selector % 2 === 0
@@ -371,26 +371,57 @@ class Inventory extends React.Component {
                                   borderRadius: "1rem",
                                 }}
                               >
-                               
-                                <div className="text-uppercase text-bold-600 text-left  pt-1 pb-1 px-1 mb-1">
+                                <div
+                                  className="text-uppercase text-bold-600 text-left  pt-1 pb-1 px-1 mb-1"
+                                  style={{
+                                    fontSize:
+                                      window.innerWidth > 650
+                                        ? "1rem"
+                                        : ".7rem",
+                                  }}
+                                >
                                   {rowData.masterSKU || ""}
                                 </div>
                                 <div className="">
                                   <div className="d-flex flex-column flex-md-column mb-2">
                                     {/*//! Table of tables <DataTableCustom /> */}
-                                    <div className="text-left px-3 ">
+                                    <div
+                                      className={`text-left  ${
+                                        window.innerWidth > 650 && "px-3"
+                                      }`}
+                                    >
                                       <DataTablePagination />
                                     </div>
-                                    <div className="px-3 ">
+                                    <div
+                                      className={`${
+                                        window.innerWidth > 650 && "px-3"
+                                      }`}
+                                    >
                                       <DataTableCustomBK />
                                     </div>
                                   </div>
                                 </div>
                                 <div className="d-flex flex-row justify-content-end  pt-1 pb-1 px-1 border-bottom-4">
-                                  <div className="title text-uppercase text-bold-600  mx-1 ">
+                                  <div
+                                    className="title text-uppercase text-bold-600  mx-1 "
+                                    style={{
+                                      fontSize:
+                                        window.innerWidth > 650
+                                          ? "1rem"
+                                          : ".7rem",
+                                    }}
+                                  >
                                     Balance Stock Left
                                   </div>
-                                  <div className="title text-bold-600">
+                                  <div
+                                    className="title text-bold-600"
+                                    style={{    
+                                      fontSize:
+                                        window.innerWidth > 650
+                                          ? "1rem"
+                                          : ".7rem",
+                                    }}
+                                  >
                                     {rowData.balance_stock_left || 0}
                                   </div>
                                 </div>

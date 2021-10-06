@@ -31,7 +31,7 @@ function DataTableCustomBK(props) {
       selector: "sales",
       id: "sales",
       sortable: true,
-      maxWidth  : "33%" , 
+      maxWidth: "33%",
       cell: (row) => (
         <div className={D.SalesHolder}>
           <div className={D.col}>
@@ -54,7 +54,7 @@ function DataTableCustomBK(props) {
       name: "Other reasons",
       selector: "others",
       id: "others",
-      
+
       sortable: true,
       cell: (row) => (
         <div>
@@ -179,12 +179,16 @@ function DataTableCustomBK(props) {
       >
         {" "}
         <ChevronUp
+          size={20}
           style={{
+            fontSize: "1rem",
             transition: ".15s",
             transform: show ? "rotate(180deg)" : "rotate(90deg)",
           }}
         />
-        <p className="text-capitalize text-bold-600 ml-2">OutBounds</p>
+        <p className={`text-capitalize text-bold-600 ml-1 ${D.bounds}`}>
+          OutBounds
+        </p>
       </div>
       <div>
         {width > 650 && show ? (
@@ -199,28 +203,29 @@ function DataTableCustomBK(props) {
               noHeader
             />
           </>
-        ) : (show  && 
-          <>
-            <DataTable
-              className="dataTable-custom"
-              data={data}
-              columns={saleCol}
-              responsive
-              highlightOnHover
-              fixedHeader
-              noHeader
-             
-            />
-            <DataTable
-              className="dataTable-custom"
-              data={data}
-              columns={otherCol}
-              responsive
-              highlightOnHover
-              fixedHeader
-              noHeader
-            />
-          </>
+        ) : (
+          show && (
+            <>
+              <DataTable
+                className="dataTable-custom"
+                data={data}
+                columns={saleCol}
+                responsive
+                highlightOnHover
+                fixedHeader
+                noHeader
+              />
+              <DataTable
+                className="dataTable-custom"
+                data={data}
+                columns={otherCol}
+                responsive
+                highlightOnHover
+                fixedHeader
+                noHeader
+              />
+            </>
+          )
         )}
       </div>
     </div>

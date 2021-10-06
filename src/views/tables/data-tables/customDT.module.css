@@ -30,6 +30,18 @@
 .customTable{
  
 }
+
+.bounds{
+  font-size:1rem;
+}
+@media screen and (max-width:650px){
+  .bounds{
+    font-size:.8rem;
+  }
+}
+
+
+
 /*TODO figure out how to style the headers*/
 [data-column-id="others"].rdt_TableCol,
 [data-column-id="sales"].rdt_TableCol {

@@ -35,7 +35,7 @@ function DataTablePagination() {
             id: "info",
             sortable: true,
             cell: (row) => (
-              <div className="d-flex my-3 w-10 flex-wrap flex-column">
+              <div className="d-flex my-0 w-10 flex-wrap flex-column">
                 <div className={D.col}>
                   <span className={`${D.Title} ${D.locationSVG}`}>
                     <MapPin size={20} />
@@ -571,12 +571,15 @@ function DataTablePagination() {
         }}
       >
         <ChevronUp
+          size={20}
           style={{
             transition: ".15s",
             transform: show ? "rotate(180deg)" : "rotate(90deg)",
           }}
         />
-        <p className="text-capitalize text-bold-600 ml-2">inbounds</p>
+        <p className={`text-capitalize text-bold-600 ml-1 ${D.bounds}`}>
+          inbounds
+        </p>
       </div>
       <div>
         {show && (
