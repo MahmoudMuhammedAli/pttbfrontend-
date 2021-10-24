@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Card, CardBody } from "reactstrap";
 import DataTable from "react-data-table-component";
 import { MapPin, Calendar, Package, ChevronUp } from "react-feather";
 import D from "./customDT.module.css";
 import "./global.css";
 
-function DataTablePagination() {
+function DataTablePagination(propsData) {
   const [show, setShow] = useState(false);
   const [columns, setColumns] = useState(
     window.innerWidth > 560
@@ -562,6 +562,10 @@ function DataTablePagination() {
       qty: 100,
     },
   ]);
+
+  // useEffect(() => {
+  //   setData(propsData);
+  // }, [propsData]);
   return (
     <div>
       <div

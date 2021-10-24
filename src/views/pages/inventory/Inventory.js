@@ -340,12 +340,6 @@ class Inventory extends React.Component {
                         {
                           Header: "Name",
                           accessor: "masterSKU",
-                          // style: {
-                          //   background:
-                          //     this.state.selector % 2 === 0
-                          //       ? "rgba(240,240,240,1)"
-                          //       : "#fff",
-                          // },
                           enableRowSpan: true,
                           Cell: (props) => {
                             const rowData = props.original;
