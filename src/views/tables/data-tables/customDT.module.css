@@ -1,46 +1,42 @@
-
-.otherHolder{
-  padding:10px 0; 
+.otherHolder {
+  padding: 10px 0;
 }
-.inbounds, .SalesHolder{
-  border:none;
-  
+.inbounds,
+.SalesHolder {
+  border: none;
 }
 
-.Title{ 
-  color:#3c92dc;
-  font-weight: bold; 
+.Title {
+  color: #3c92dc;
+  font-weight: bold;
   margin-right: 5px;
 }
-.headers{
+.headers {
   width: 100%;
   font-size: 1rem;
   text-align: left;
-  
 }
 
-.col, .colQty{
+.col,
+.colQty {
   margin: 10px;
 }
 
-.colQty{
+.colQty {
   text-align: left;
 }
 
-.customTable{
- 
+.customTable {
 }
 
-.bounds{
-  font-size:1rem;
+.bounds {
+  font-size: 1rem;
 }
-@media screen and (max-width:650px){
-  .bounds{
-    font-size:.8rem;
+@media screen and (max-width: 650px) {
+  .bounds {
+    font-size: 0.8rem;
   }
 }
-
-
 
 /*TODO figure out how to style the headers*/
 [data-column-id="others"].rdt_TableCol,

@@ -77,6 +77,7 @@
     "redux": "^4.0.5",
     "redux-debounced": "~0.5.0",
     "redux-thunk": "~2.3.0",
+    "sass": "^1.43.3",
     "styled-components": "^5.0.1",
     "swiper": "^5.3.0",
     "xlsx": "^0.15.5",
@@ -94,7 +95,6 @@
     "extends": "react-app"
   },
   "devDependencies": {
-    "node-sass": "^4.13.1",
     "react-app-rewire-postcss": "^3.0.2",
     "react-app-rewired": "^2.1.5",
     "react-fuzzy": "^1.2.0"

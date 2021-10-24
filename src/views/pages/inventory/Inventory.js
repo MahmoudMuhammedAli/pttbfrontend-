@@ -362,10 +362,6 @@ class Inventory extends React.Component {
                             return (
                               <div
                                 style={{
-                                  // background:
-                                  //   this.state.selector % 2 === 0
-                                  //     ? "rgba(240,240,0,1)"
-                                  //     : "#fff",
                                   boxShadow: "0px 20px 20px #eaeaea",
                                   margin: "0",
                                   borderRadius: "1rem",
@@ -384,7 +380,6 @@ class Inventory extends React.Component {
                                 </div>
                                 <div className="">
                                   <div className="d-flex flex-column flex-md-column mb-2">
-                                    {/*//! Table of tables <DataTableCustom /> */}
                                     <div
                                       className={`text-left  ${
                                         window.innerWidth > 650 && "px-3"
@@ -415,7 +410,7 @@ class Inventory extends React.Component {
                                   </div>
                                   <div
                                     className="title text-bold-600"
-                                    style={{    
+                                    style={{
                                       fontSize:
                                         window.innerWidth > 650
                                           ? "1rem"
